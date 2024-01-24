@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Contact Form</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    margin-left: 10px;
+}
+.form-control {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid rgb(169, 145, 145);
+  border-radius: 3px;
+  margin-left: 40px;
+
+}
+
+.hobbies{
+  margin-left: 50px;
+}
+
+.form-check-label,form-check-input{
+  margin-left: 20px;
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Contact Form</h1>
+  <form id="contactForm" onsubmit="return validateForm()">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter Your ID"  id="id" name="id" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter Your Username" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Enter Your Username" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" placeholder="Enter Your Email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <input type="date" class="form-control" placeholder="Enter Your Date Of Birth" id="dob" name="dob" max="2006-01-01" required>
+    </div>
+    <div class="form-group">
+        <label class="hobbies">Gender:</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+            <label class="form-check-label" for="male">Male</label>
+            <input class="form-check-input" type="radio" name="gender" id="female" value="male" required>
+            <label class="form-check-label" for="male">female</label>
+    </div><br/>
+    <div class="form-group">
+      <textarea class="form-control" id="address" placeholder="Enter Your Address" name="address" required></textarea>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control"  placeholder="Enter Your Address" id="city" name="city" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control"  placeholder="Enter Your Pincode" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control"  placeholder="Enter Your State" id="state" name="state" required>
+    </div>
+    <div class="form-group">
+      <label class ="hobbies">Hobbies:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="drawing" id="hobbyDrawing" name="hobbies[]">
+        <label class="form-check-label" for="hobbyDrawing">Drawing</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="singing" id="hobbySinging" name="hobbies[]">
+        <label class="form-check-label" for="hobbySinging">Singing</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-secondary" onclick="resetForm()">Cancel</button>
+  </form>
+</div>
+
+<script>
+    function validateForm() {
+    var id = document.getElementById("id").value;
+    var name = document.getElementById("name").value;
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+    var dob = document.getElementById("dob").value;
+    var gender = document.getElementById("gender").value;
+    var address = document.getElementById("address").value;
+    var city = document.getElementById("city").value;
+    var pincode = document.getElementById("pincode").value;
+    var state = document.getElementById("state").value;
+    var hobbies = document.querySelectorAll('input[name="hobbies[]"]:checked;
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters.");
+        return false;
+    }
+
+   
+    if (pincode.length !== 6) {
+        alert("Pincode must be 6 digits.");
+        return false;
+    }
+
+  
+        alert("Select at least one hobby.");
+        return false;
+    }
+    
+    alert("Form submitted successfully!");
+    return true;
+  
+function resetForm() {
+    document.getElementById("contactForm").reset();
+}
+
+</script>
+</body>
+</html>
